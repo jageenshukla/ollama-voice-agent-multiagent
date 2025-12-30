@@ -1,0 +1,420 @@
+/* Netflix + Black Mirror Theme */
+:root {
+  --netflix-red: #E50914;
+  --netflix-red-dark: #B20710;
+  --netflix-black: #141414;
+  --black-mirror-bg: #0a0a0a;
+  --dark-gray: #1f1f1f;
+  --darker-gray: #2a2a2a;
+  --tech-cyan: #00e5ff;
+  --tech-cyan-dim: #00b8d4;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--black-mirror-bg) 0%, var(--netflix-black) 100%);
+  color: var(--text-primary);
+  position: relative;
+}
+
+/* Subtle tech grid overlay */
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.app-header {
+  text-align: center;
+  padding: 2rem;
+  border-bottom: 2px solid rgba(229, 9, 20, 0.3);
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--netflix-red) 0%, var(--tech-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(229, 9, 20, 0.3);
+}
+
+.app-header p {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.placeholder-character {
+  width: 220px;
+  height: 220px;
+  border: 3px dashed rgba(229, 9, 20, 0.5);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(229, 9, 20, 0.15) 0%, rgba(10, 10, 10, 0.8) 100%);
+  box-shadow:
+    0 0 30px rgba(229, 9, 20, 0.3),
+    inset 0 0 20px rgba(0, 229, 255, 0.1);
+  transition: all 0.3s ease;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.placeholder-character:hover {
+  border-color: var(--netflix-red);
+  box-shadow:
+    0 0 40px rgba(229, 9, 20, 0.5),
+    inset 0 0 30px rgba(0, 229, 255, 0.2);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 30px rgba(229, 9, 20, 0.3),
+      inset 0 0 20px rgba(0, 229, 255, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 50px rgba(229, 9, 20, 0.5),
+      inset 0 0 30px rgba(0, 229, 255, 0.2);
+  }
+}
+
+.placeholder-character p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.placeholder-character .hint {
+  font-size: 0.8rem;
+  color: var(--tech-cyan);
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.status {
+  margin: 1.5rem 0;
+  padding: 1rem 2rem;
+  background: rgba(31, 31, 31, 0.8);
+  border-radius: 8px;
+  border: 1px solid rgba(229, 9, 20, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.status-text {
+  color: var(--netflix-red);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.conversation-history {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.conversation-history h3 {
+  color: var(--netflix-red);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.messages {
+  background: rgba(31, 31, 31, 0.6);
+  border: 1px solid rgba(229, 9, 20, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+  min-height: 150px;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.system-message {
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 2px solid rgba(229, 9, 20, 0.3);
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+}
+
+.app-footer p {
+  margin: 0.5rem 0;
+  color: var(--text-secondary);
+}
+
+.app-footer p:first-child {
+  color: var(--netflix-red);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+/* Character Icon */
+.character-icon {
+  font-size: 4rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.character-status {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--tech-cyan);
+}
+
+.placeholder-character.speaking .character-icon {
+  animation: pulse 0.5s ease-in-out infinite, float 3s ease-in-out infinite;
+}
+
+/* Status styling */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.status-text.connected {
+  color: var(--tech-cyan);
+}
+
+.status-text.disconnected {
+  color: var(--netflix-red);
+}
+
+.stop-button {
+  padding: 0.5rem 1rem;
+  background: var(--netflix-red);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.stop-button:hover {
+  background: var(--netflix-red-dark);
+}
+
+/* Message bubbles */
+.message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.user {
+  background: rgba(0, 229, 255, 0.1);
+  border-left: 3px solid var(--tech-cyan);
+  margin-left: 2rem;
+}
+
+.message.assistant {
+  background: rgba(229, 9, 20, 0.1);
+  border-left: 3px solid var(--netflix-red);
+  margin-right: 2rem;
+}
+
+.message-role {
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  color: var(--tech-cyan);
+}
+
+.message.assistant .message-role {
+  color: var(--netflix-red);
+}
+
+.message-content {
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Input form */
+.input-form {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.message-input {
+  flex: 1;
+  padding: 1rem;
+  background: rgba(31, 31, 31, 0.8);
+  border: 2px solid rgba(229, 9, 20, 0.3);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.message-input:focus {
+  border-color: var(--netflix-red);
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
+}
+
+.message-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.message-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.send-button {
+  padding: 1rem 2rem;
+  background: var(--netflix-red);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.send-button:hover:not(:disabled) {
+  background: var(--netflix-red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+}
+
+.send-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Scrollable messages */
+.messages {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages::-webkit-scrollbar-track {
+  background: rgba(20, 20, 20, 0.5);
+  border-radius: 3px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: var(--netflix-red);
+  border-radius: 3px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+  background: var(--netflix-red-dark);
+}
+
+/* Voice transcript display */
+.voice-transcript {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: rgba(0, 229, 255, 0.1);
+  border: 2px solid var(--tech-cyan);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  animation: slideIn 0.3s ease-out;
+}
+
+.transcript-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--tech-cyan);
+  margin-bottom: 0.5rem;
+}
+
+.transcript-text {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Character container adjustments */
+.character-container {
+  margin-bottom: 2rem;
+}
