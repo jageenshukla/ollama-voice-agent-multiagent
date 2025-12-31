@@ -123,7 +123,8 @@ function App() {
             // Change the background color on the .app div
             const appElement = document.querySelector('.app') as HTMLElement;
             if (appElement) {
-              appElement.style.background = color;
+              // Use !important to override CSS gradient
+              appElement.style.setProperty('background', color, 'important');
             }
 
             // Send success result back to backend

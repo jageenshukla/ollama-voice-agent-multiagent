@@ -611,6 +611,75 @@ const conversationConfig = {
 };
 ```
 
+### Change TTS Voice
+
+The app uses **Web Speech API** for text-to-speech with browser voices (free, no API costs).
+
+**Current Voice**: `Google UK English Female`
+
+#### Available Voice Options
+
+Edit `backend/.env`:
+
+```env
+# TTS Configuration
+TTS_PROVIDER=browser
+TTS_BROWSER_VOICE=Google UK English Female
+TTS_RATE=1.0     # Speed (0.1-10.0, default: 1.0)
+TTS_PITCH=1.0    # Pitch (0.0-2.0, default: 1.0)
+TTS_VOLUME=1.0   # Volume (0.0-1.0, default: 1.0)
+```
+
+#### Popular Voice Options (Chrome/Edge)
+
+**English Voices**:
+- `Google US English` (default, neutral American)
+- `Google UK English Female` (British female, current)
+- `Google UK English Male` (British male)
+- `Microsoft Zira - English (United States)` (Natural, Windows)
+- `Microsoft David - English (United States)` (Male, Windows)
+
+**Other Languages**:
+- `Google हिन्दी` (Hindi)
+- `Google español` (Spanish)
+- `Google español de Estados Unidos` (Spanish US)
+- `Google français` (French)
+- `Google Deutsch` (German)
+- `Google 日本語` (Japanese)
+- `Google 中文` (Chinese)
+
+#### How to Find Available Voices
+
+Open browser console (F12) and run:
+
+```javascript
+speechSynthesis.getVoices().forEach(v =>
+  console.log(`${v.name} (${v.lang})`)
+);
+```
+
+#### Alternative TTS Providers
+
+| Provider | Quality | Cost | Setup |
+|----------|---------|------|-------|
+| `browser` (current) | Good | FREE | None |
+| `system` | Basic | FREE | None (macOS/Linux only) |
+| `piper` | High | FREE | Install Piper |
+| `coqui` | Excellent | FREE | Python service |
+
+To use alternative providers, edit `backend/.env`:
+
+```env
+# For Piper (local neural TTS)
+TTS_PROVIDER=piper
+PIPER_PATH=/path/to/piper
+PIPER_MODEL=en_US-lessac-medium
+
+# For Coqui (highest quality)
+TTS_PROVIDER=coqui
+COQUI_TTS_URL=http://localhost:5002
+```
+
 ---
 
 ## 🐛 Debugging

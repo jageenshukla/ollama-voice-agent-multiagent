@@ -82,12 +82,18 @@ export class VoiceAgent {
       // Add user message to history
       this.addToHistory('user', userInput);
 
-      // Build messages array
-      let messages = this.buildMessagesArray();
-
       // STEP 1: Use FunctionGemma as Router to detect if tool is needed
+      // IMPORTANT: Only send recent messages to avoid confusing the router
       console.log('[AGENT] STEP 1: Router (FunctionGemma) checking for tool calls...');
-      const routerResponse = await this.routerProvider.chat(messages, availableTools);
+      const routerMessages: Message[] = [
+        { role: 'system', content: this.systemPrompt },
+        // Only include last 2 exchanges (4 messages) to keep router focused
+        ...this.conversationHistory.slice(-4).map(entry => ({
+          role: entry.role,
+          content: entry.content,
+        })),
+      ];
+      const routerResponse = await this.routerProvider.chat(routerMessages, availableTools);
 
       // STEP 2: Check router's decision
       if (routerResponse.message.tool_calls && routerResponse.message.tool_calls.length > 0) {
@@ -115,11 +121,35 @@ export class VoiceAgent {
 
         // STEP 3: Use Gemma 2 to generate natural response about tool execution
         console.log('[AGENT] STEP 3: Gemma 2 generating natural response...');
+
+        // Build context-aware messages with conversation history
         const responseMessages: Message[] = [
-          { role: 'system', content: this.systemPrompt },
-          { role: 'user', content: userInput },
-          { role: 'assistant', content: `Tool executed successfully: ${JSON.stringify(toolResults)}. Generate a natural, personality-driven response about what was done.` },
+          {
+            role: 'system',
+            content: this.systemPrompt + '\n\nIMPORTANT: A tool was just executed for the user. Acknowledge what you did in a natural, friendly way.'
+          },
         ];
+
+        // Add conversation history for context
+        for (const entry of this.conversationHistory.slice(-6)) { // Last 3 exchanges
+          responseMessages.push({
+            role: entry.role,
+            content: entry.content,
+          });
+        }
+
+        // Add tool execution context
+        const toolSummary = toolResults.map(r => {
+          if (r.result?.color) {
+            return `Changed background color to ${r.result.color}`;
+          }
+          return JSON.stringify(r);
+        }).join(', ');
+
+        responseMessages.push({
+          role: 'user',
+          content: `[SYSTEM: Tool executed - ${toolSummary}] Now respond naturally to acknowledge what you just did.`
+        });
 
         const conversationResponse = await this.conversationProvider.chat(responseMessages);
         const finalResponse = conversationResponse.message.content;
@@ -127,10 +157,8 @@ export class VoiceAgent {
         // Add to history
         this.addToHistory('assistant', finalResponse);
 
-        // Clear old history
-        if (this.conversationHistory.length > 4) {
-          this.conversationHistory = this.conversationHistory.slice(-2);
-        }
+        // Trim history if needed
+        this.trimHistory();
 
         console.log('[AGENT] === WORKFLOW COMPLETE (Tool + Response) ===');
         return finalResponse;
@@ -140,7 +168,9 @@ export class VoiceAgent {
         console.log('[AGENT] ✗ No tool needed - routing to Gemma 2 for conversation');
         console.log('[AGENT] STEP 2B: Gemma 2 handling conversation...');
 
-        const conversationResponse = await this.conversationProvider.chat(messages);
+        // Build full conversation messages for Gemma 2
+        const conversationMessages = this.buildMessagesArray();
+        const conversationResponse = await this.conversationProvider.chat(conversationMessages);
         const finalResponse = conversationResponse.message.content;
 
         // Add to history
