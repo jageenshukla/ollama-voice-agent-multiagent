@@ -98,6 +98,17 @@ User Input
 - **Gemma 2:2b**: Specialized for natural conversation (less reliable for tool calling)
 - **Together**: They leverage each other's strengths for intelligent function calling!
 
+### Modern Agent Architecture
+
+This project follows the **code-first philosophy** promoted by Google's [Agent Development Kit (ADK) for TypeScript](https://developers.googleblog.com/en/introducing-agent-development-kit-for-typescript-build-ai-agents-with-the-power-of-a-code-first-approach/):
+
+- ✅ **Type-safe agent logic** - Full TypeScript with interface definitions
+- ✅ **Modular composition** - Specialized agents working together
+- ✅ **Code over prompts** - Agent behavior defined in code, not text
+- ✅ **Local-first** - Runs on Ollama instead of cloud-only models
+
+While ADK focuses on Gemini models, this project proves the same architectural patterns work with local LLMs like FunctionGemma and Gemma 2 — giving you the benefits of modern agent development without cloud dependencies or API costs.
+
 ---
 
 ## 📁 Project Structure
@@ -864,6 +875,7 @@ curl http://localhost:11434/api/tags
 
 ### 📚 Additional Resources
 
+- [Google Agent Development Kit (ADK) for TypeScript](https://developers.googleblog.com/en/introducing-agent-development-kit-for-typescript-build-ai-agents-with-the-power-of-a-code-first-approach/)
 - [Ollama Documentation](https://github.com/ollama/ollama)
 - [FunctionGemma on Ollama](https://ollama.com/library/functiongemma)
 - [FunctionGemma Announcement](https://blog.google/technology/developers/functiongemma/)
