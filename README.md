@@ -708,23 +708,6 @@ ollama ps  # See running models
 
 ---
 
-## 📊 Architecture Decisions
-
-### Why Custom Instead of Google ADK?
-
-| Feature | Google ADK | Custom Implementation |
-|---------|-----------|----------------------|
-| Framework Support | ✅ Full | ⚠️ Manual |
-| Built-in Patterns | ✅ Yes | ⚠️ Need to implement |
-| Local Models (Ollama) | ❌ Not designed for | ✅ Perfect for |
-| Cloud Dependencies | ❌ Requires Gemini | ✅ None |
-| Flexibility | ⚠️ Framework constraints | ✅ Full control |
-| Cost | ❌ API costs | ✅ Free (local) |
-
-**Decision**: Custom implementation for **local-first approach** with ADK-inspired patterns.
-
----
-
 ## 🤝 Contributing
 
 Want to extend this project?
@@ -739,17 +722,6 @@ Want to extend this project?
 ## 📄 License
 
 MIT
-
----
-
-## 🎯 Key Takeaways
-
-✅ **Two agents work together**: FunctionGemma detects tools, Gemma 2 handles conversation
-✅ **Easily extensible**: Add new tools in 3 steps
-✅ **Frontend-backend tool delegation**: Tools can execute on either side
-✅ **Local-first**: Runs entirely on local Ollama models
-✅ **Production-ready**: Error handling, logging, and proper architecture
-✅ **Not fixed to color tool**: The system works with ANY tool you add!
 
 ---
 
@@ -856,7 +828,7 @@ appElement.style.background = color;
 
 Found a bug or need help?
 
-1. **Check existing issues:** [GitHub Issues](https://github.com/your-repo/issues)
+1. **Check existing issues:** [GitHub Issues](https://github.com/jageenshukla/ollama-voice-agent-multiagent/issues)
 2. **Create new issue:** Include:
    - What you were trying to do
    - What happened instead
@@ -883,8 +855,8 @@ curl http://localhost:11434/api/tags
 
 ### 💬 Community & Discussions
 
-- **Questions?** Open a [GitHub Discussion](https://github.com/your-repo/discussions)
-- **Feature requests?** Open an [issue with "enhancement" label](https://github.com/your-repo/issues)
+- **Questions?** Open a [GitHub Discussion](https://github.com/jageenshukla/ollama-voice-agent-multiagent/discussions)
+- **Feature requests?** Open an [issue with "enhancement" label](https://github.com/jageenshukla/ollama-voice-agent-multiagent/issues)
 - **Want to contribute?** See [Contributing](#-contributing)
 
 ### 📚 Additional Resources
