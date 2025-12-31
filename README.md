@@ -1014,6 +1014,3 @@ Note: This defeats the "local-first, no API cost" philosophy, but it's technical
 ---
 
 **Built with ❤️ using Ollama, TypeScript, and Socket.io**
-
-**Last Updated:** 2025-12-29
-**Status:** Production Ready 🚀
