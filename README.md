@@ -24,7 +24,9 @@
 - [Testing](#-testing)
 - [Customization Guide](#-customization-guide)
 - [Debugging](#-debugging)
-- [Architecture Decisions](#-architecture-decisions)
+- [Contributing](#-contributing)
+- [Getting Help & Support](#-getting-help--support)
+- [FAQ](#-frequently-asked-questions-faq)
 
 ---
 
@@ -443,8 +445,8 @@ ollama list
 
 ```bash
 # Clone repository
-git clone <your-repo-url>
-cd adk-nodejs
+git clone https://github.com/jageenshukla/ollama-voice-agent-multiagent.git
+cd ollama-voice-agent-multiagent
 
 # Install backend dependencies
 cd backend
@@ -855,8 +857,7 @@ curl http://localhost:11434/api/tags
 
 ### 💬 Community & Discussions
 
-- **Questions?** Open a [GitHub Discussion](https://github.com/jageenshukla/ollama-voice-agent-multiagent/discussions)
-- **Feature requests?** Open an [issue with "enhancement" label](https://github.com/jageenshukla/ollama-voice-agent-multiagent/issues)
+- **Questions or feature requests?** Open an [issue on GitHub](https://github.com/jageenshukla/ollama-voice-agent-multiagent/issues)
 - **Want to contribute?** See [Contributing](#-contributing)
 
 ### 📚 Additional Resources
