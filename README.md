@@ -857,7 +857,9 @@ curl http://localhost:11434/api/tags
 
 ### 💬 Community & Discussions
 
-- **Questions or feature requests?** Open an [issue on GitHub](https://github.com/jageenshukla/ollama-voice-agent-multiagent/issues)
+- **Questions?** Start a [GitHub Discussion](https://github.com/jageenshukla/ollama-voice-agent-multiagent/discussions)
+- **Bug reports?** Open an [issue on GitHub](https://github.com/jageenshukla/ollama-voice-agent-multiagent/issues)
+- **Feature requests?** Open an [issue with "enhancement" label](https://github.com/jageenshukla/ollama-voice-agent-multiagent/issues)
 - **Want to contribute?** See [Contributing](#-contributing)
 
 ### 📚 Additional Resources
