@@ -7,13 +7,6 @@
 
 > A production-ready voice AI agent built with a **Custom Multi-Agent Router Pattern** using local LLMs (FunctionGemma + Gemma 2) and function calling capabilities. 100% open source and runs completely locally with **no API costs**.
 
-<!--
-🎬 Add your demo here:
-![Demo](./assets/demo.gif)
-Or use a video:
-[![Demo Video](https://img.shields.io/badge/▶-Watch_Demo-red?style=for-the-badge)](https://youtu.be/your-video-id)
--->
-
 **Keywords:** Multi-Agent AI, Function Calling, Local LLM, Voice AI, Ollama, FunctionGemma, Gemma 2, TypeScript AI Agent, No API Costs, Open Source AI
 
 ---
@@ -48,17 +41,14 @@ Or use a video:
 
 ## 🎬 Demo & Screenshots
 
-<!--
-Add your demo video, GIFs, or screenshots here!
+### Live Demo
 
-### Live Demo Video
-[![Watch Demo](https://img.shields.io/badge/▶-Watch_Full_Demo-red?style=for-the-badge&logo=youtube)](https://youtu.be/your-video-id)
+![Demo](./assets/demo.gif)
 
-### Quick Demo GIF
-![Demo GIF](./assets/demo.gif)
 *Watch Pixel respond to voice commands and execute tools in real-time*
 
 ### Screenshots
+
 <table>
   <tr>
     <td><img src="./assets/screenshot-idle.png" alt="Idle State" width="250"/></td>
@@ -72,22 +62,11 @@ Add your demo video, GIFs, or screenshots here!
   </tr>
 </table>
 
-### Tool Execution Demo
-![Tool Execution](./assets/tool-execution-demo.gif)
-*Multi-agent workflow: FunctionGemma detects tool → Executes → Gemma 2 responds*
--->
-
 ---
 
 ## 🏗️ Architecture Overview
 
 This project implements a **Multi-Agent Router Pattern** where two specialized LLMs work together:
-
-<!--
-Add your architecture diagram image here:
-![Multi-Agent Architecture](./assets/architecture-diagram.png)
-*Visual representation of the two-agent workflow*
--->
 
 ```
 User Input
