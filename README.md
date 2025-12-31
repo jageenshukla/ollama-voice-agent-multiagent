@@ -890,7 +890,8 @@ curl http://localhost:11434/api/tags
 ### 📚 Additional Resources
 
 - [Ollama Documentation](https://github.com/ollama/ollama)
-- [FunctionGemma Model Card](https://huggingface.co/google/functiongemma-2b)
+- [FunctionGemma on Ollama](https://ollama.com/library/functiongemma)
+- [FunctionGemma Announcement](https://blog.google/technology/developers/functiongemma/)
 - [Web Speech API Docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
 - [Socket.io Documentation](https://socket.io/docs/v4/)
 
